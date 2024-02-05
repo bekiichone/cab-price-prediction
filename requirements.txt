@@ -1,3 +1,5 @@
+notebook
+
 click==8.1.7
 lightgbm==4.3.0
 matplotlib==3.7.4
