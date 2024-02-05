@@ -1,52 +1,41 @@
-Project Organization
-------------
+# Uber Price Prediction Project
 
-    ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
-    ├── README.md          <- The top-level README for developers using this project.
-    ├── data
-    │   ├── external       <- Data from third party sources.
-    │   ├── interim        <- Intermediate data that has been transformed.
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
-    │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
-    │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
-    │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-    │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
-    │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
-    │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
-    │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
-    │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
-    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
+## Project Overview
 
+This project aims to predict Uber ride prices based on various features such as distance, time, weather conditions, and more. The goal is to understand the factors influencing ride prices and build a predictive model for accurate fare estimates.
 
---------
+## Data Source
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+The dataset used in this project is sourced from the [Monash Time Series Forecasting Repository](https://zenodo.org/records/5122114), which sourced from [Uber & Lyft Cab prices](https://www.kaggle.com/datasets/ravi72munde/uber-lyft-cab-prices/data). It simulates ride data with real prices, allowing for the exploration of factors affecting ride costs.
+
+Context:
+> Uber and Lyft's ride prices are not constant like public transport. They are greatly affected by the demand and supply of rides at a given time. So what exactly drives this demand? The first guess would be the time of the day; times around 9 am and 5 pm should see the highest surges on account of people commuting to work/home. Another guess would be the weather; rain/snow should cause more people to take rides.
+
+## Project Structure
+
+The project follows the [Cookiecutter Data Science directory structure](https://drivendata.github.io/cookiecutter-data-science/):
+
+```plaintext
+├── data
+│   └── raw             # Raw data (Monash Time Series Forecasting Repository)
+├── models              # Trained machine learning models
+├── notebooks           # Jupyter notebooks for analysis and visualization
+    └── exploratory.ipynb    # Here I run the experiments 
+├── reports             # Project reports, documentation, and results
+├── src
+│   ├── data            # Data processing scripts
+        └── make_dataset.py    # Build dataset for training
+│   ├── features        # Feature engineering scripts
+        └── build_features.py    # Preprocess and feature engineering of dataset
+│   ├── models          # Model training and evaluation scripts
+        └── train_model.py    # Model training pipeline
+        └── predict_model.py    # Model inferenct pipeline
+│   └── utils           # Utility functions
+└── tests               # Unit tests for project functions
+```
+## Usage
+
+1. **Install Dependencies**: Run `pip install -r requirements.txt` to install project dependencies.
+2. **Run Notebooks**: Explore Jupyter notebook in the `notebooks` directory to explore EDA, model training and etc.
+3. **Train Models**: Execute `train_model.py` in the `src/models` directory to train and save machine learning models.
+4. **Predictions**: Utilize `predict_model.py` for making predictions based on the trained models.
