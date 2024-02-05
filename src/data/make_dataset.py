@@ -59,12 +59,21 @@ def merge_data(cab_rides_data, weather_data):
     cab_rides['hourly_time_stamp'] = cab_rides['time_stamp'].dt.floor('H')
 
     # Merge for source location
-    cab_rides_merged_source = pd.merge(cab_rides, weather.add_suffix('_source'), left_on=['source', 'hourly_time_stamp'], right_on=['location_source', 'hourly_time_stamp_source'], how='left')
+    cab_rides_merged_source = pd.merge(cab_rides, weather.add_suffix('_source'), 
+                                       left_on=['source', 'hourly_time_stamp'], 
+                                       right_on=['location_source', 'hourly_time_stamp_source'], 
+                                       how='left')
     cab_rides_merged_source.drop(['location_source', 'hourly_time_stamp_source'], axis=1, inplace=True)
 
     # Merge for destination location
-    cab_rides_merged_dest = pd.merge(cab_rides_merged_source, weather.add_suffix('_destination'), left_on=['destination', 'hourly_time_stamp'], right_on=['location_destination', 'hourly_time_stamp_destination'], how='left')
-    cab_rides_merged_dest.drop(['hourly_time_stamp', 'location_destination', 'hourly_time_stamp_destination'], axis=1, inplace=True)
+    cab_rides_merged_dest = pd.merge(cab_rides_merged_source, 
+                                     weather.add_suffix('_destination'), 
+                                     left_on=['destination', 'hourly_time_stamp'], 
+                                     right_on=['location_destination', 'hourly_time_stamp_destination'], 
+                                     how='left')
+    cab_rides_merged_dest.drop(['hourly_time_stamp', 
+                                'location_destination', 
+                                'hourly_time_stamp_destination'], axis=1, inplace=True)
 
     return cab_rides_merged_dest
 
