@@ -1,8 +1,3 @@
-something_analysis
-==============================
-
-a project to showcase time series analysis and code quality
-
 Project Organization
 ------------
 
